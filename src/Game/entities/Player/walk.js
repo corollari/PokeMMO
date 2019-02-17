@@ -210,13 +210,6 @@ export function startMoving(x, y, dir) {
     obstacle = false;
   }
 
-  if (this.isLocalPlayer === true && OFFLINE_MODE === false) {
-    this.instance.engine.connection.sendData(
-      "Position",
-      [this.id, dir, x, y]
-    );
-  }
-
   /** Blocked, bump so */
   if (obstacle === true) {
     this.animations.push({
@@ -237,6 +230,14 @@ export function startMoving(x, y, dir) {
       oY: y
     });
     this.moving = true;
+
+if (this.isLocalPlayer === true && OFFLINE_MODE === false) {
+    this.instance.engine.connection.sendData(
+      "Position",
+      [this.id, dir, position.x, position.y]
+    );
+}
+
   }
 
   this.idleTime = 0;

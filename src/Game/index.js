@@ -73,6 +73,7 @@ export default class Game {
             this,
             `${CONNECTION_URL}:${CONNECTION_PORT}`
           );
+		window.console.log(`${CONNECTION_URL}:${CONNECTION_PORT}`)
         }
         this.setup(stage);
       return void 0;

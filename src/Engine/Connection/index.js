@@ -180,7 +180,8 @@ export default class Connection {
       offset += 4;
       let data = JSON.parse(getString());
       let entity = this.instance.engine.getEntityByProperty(data.name, "name");
-      let position = math.getTilePosition(data.x, data.y, data.dir);
+      //let position = math.getTilePosition(data.x, data.y, data.dir);
+	let position = {x: data.x,y: data.y,facing: data.dir};
       let obstacle = Maps[entity.map].isEntityCollidable(entity, position.x, position.y) === true;
       entity.onlineMove(position.x, position.y, position.facing);
     }

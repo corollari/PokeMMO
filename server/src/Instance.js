@@ -1,4 +1,4 @@
-import Packet from "../../src/packets";
+import Packet from "../../src/Packets";
 
 /**
  * Instance
@@ -88,6 +88,13 @@ export default class Instance {
       this.entity.name = name;
       this.instance.broadcastMessage(this.buildEntityData(name, 160, 144, false), name);
       this.instance.sendMessageTo(this.buildEntityData(name, 160, 144, true), name);
+	    let ii = 0;
+	    let length = this.instance.users.length;
+	    for (; ii < length; ++ii) {
+		    if (this.instance.users[ii].name === name) continue;
+		    let user = this.instance.users[ii];
+		    this.entity.socket.sendPacket(this.buildEntityData(user.name, user.position.x, user.position.y, false));
+	    }
       return void 0;
     }
 
@@ -115,6 +122,7 @@ export default class Instance {
       let dir = view.getUint16(3, true);
       let x = view.getUint16(5, true);
       let y = view.getUint16(7, true);
+	    console.log(x, y, dir);
       this.entity.position.x = x << 0;
       this.entity.position.y = y << 0;
       let data = this.getSTR(packetId, JSON.stringify({ name: this.entity.name, dir: dir, x: x, y: y }));

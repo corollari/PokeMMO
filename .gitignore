@@ -4,5 +4,6 @@ $RECYCLE.BIN/
 .DS_Store
 *.bat
 *.sh
+bundle.js
 
 node_modules

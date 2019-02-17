@@ -31,7 +31,7 @@ export const GRID_WIDTH = 1;
  * Local player name
  * @type {String}
  */
-export let LOCAL_PLAYER = null;
+export let LOCAL_PLAYER = String(new Date().getTime());
 
 /**
  * Connection url
@@ -96,14 +96,14 @@ export let DEV_MODE = true;
  * Debug mode
  * @type {Boolean}
  */
-export let DEBUG_MODE = false;
+export let DEBUG_MODE = true;
 
 /**
  * Offline mode
  * @constant
  * @type {Boolean}
  */
-export let OFFLINE_MODE = true;
+export let OFFLINE_MODE = false;
 
 /**
  * Record mode

@@ -563,7 +563,8 @@ export default class Entity extends DisplayObject {
   setup() {
 
     /** Follower */
-    if (this.following !== null) {
+    //if (this.following !== null) {
+    if(false) {
       let leader = Maps[this.map].instance.getEntityByProperty(this.following, "name");
       leader.leader = this;
       if (

@@ -4,7 +4,7 @@ import fs from "fs";
 
 import "./polyfill";
 
-import Packet from "../../src/packets";
+import Packet from "../../src/Packets";
 
 import {
   PORT
@@ -285,7 +285,7 @@ export default class GameServer {
     let length = this.users.length;
 
     for (; ii < length; ++ii) {
-      //this.users[ii].packetHandler.socket.sendPacket(new Packet.Position(1337, move));
+      this.users[ii].packetHandler.socket.sendPacket(new Packet.Position(1337, move));
     };
 
   }
