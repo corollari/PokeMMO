@@ -81,7 +81,7 @@ export function draw() {
   }
 
   if (DEBUG_MODE === true) {
-    drawGrid(
+    /*drawGrid(
       this.context,
       this.camera.position.x, this.camera.position.y,
       this.width, this.height,
@@ -90,7 +90,7 @@ export function draw() {
       .05,
       "#FFF",
       0, 0
-    );
+    );*/
     if (EDIT_MODE === true) {
       this.instance.editor.renderEditorMode();
     }

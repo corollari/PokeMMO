@@ -15,6 +15,8 @@ export function renderDebugScene() {
 
   let get = (str) => this.instance.getUpperCaseString(str);
 
+return;
+
   this.drawPixelText(
     `${get("Width")}: ${this.width} ${get("Height")}: ${this.height}`,
     15, 30,

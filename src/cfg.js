@@ -115,7 +115,7 @@ export let RECORD_MODE = true;
  * Edit mode
  * @type {Boolean}
  */
-export let EDIT_MODE = true;
+export let EDIT_MODE = false;
 
 /**
  * God mode
@@ -127,13 +127,13 @@ export let GOD_MODE = false;
  * Tileset drawind mode
  * @type {Boolean}
  */
-export let TILESET_MODE = true;
+export let TILESET_MODE = false;
 
 /**
  * Debug mode
  * @type {Boolean}
  */
-export let MINI_MAP = true;
+export let MINI_MAP = false;
 
 /**
  * Debug fps
