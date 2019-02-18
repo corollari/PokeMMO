@@ -67,10 +67,10 @@ export function jumping() {
     this.shadow.position.set(this.shadowX, this.shadowY);
     this.shadow.scale.set(0, 0);
 
-    if (this.isLocalPlayer === true) {
+    /*if (this.isLocalPlayer === true) {
       this.instance.engine.everythingJump();
       this.instance.engine.everythingRotate(1);
-    }
+    }*/
 
   }
 
