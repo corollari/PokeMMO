@@ -18,6 +18,8 @@ import Instance from "./Instance";
 
 import * as game_cfg from "../../src/cfg"; 
 
+import randomPokemon from "./randomPokemon";
+
 /**
  * GameServer
  * @class GameServer
@@ -98,6 +100,27 @@ export default class GameServer {
 
     this.ws.on('connection', this::this.onConnection);
     this.ws.on('error',      this::this.onError);
+
+	  const pokeballPositions=[[170, 190], [220, 160]];
+          randomPokemon(pokeballPositions.length).then((pokemon)=>{
+                for(let i=0; i<pokeballPositions.length; i++){
+			let entity   = new Entity({});
+			entity.pokeball=true;
+			entity.name="pokeball"+i;
+			entity.position.x=pokeballPositions[i][0];
+			entity.position.y=pokeballPositions[i][1];
+
+			let instance = new Instance(this, entity);
+			instance.pokemons=[pokemon[i]]
+
+
+			entity.id = uHash();
+			entity.instance = instance;
+
+			var self = this;
+			this.users.push(entity);
+                }
+          });
 
   }
 
@@ -216,7 +239,7 @@ export default class GameServer {
     let length = this.users.length;
 
     for (; ii < length; ++ii) {
-      if (this.users[ii].name === name) continue;
+      if (this.users[ii].name === name || this.users[ii].pokeball) continue;
       this.users[ii].socket.sendPacket(msg);
     };
 

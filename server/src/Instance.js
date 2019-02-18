@@ -32,6 +32,8 @@ export default class Instance {
      */
     this.protocol = 0;
 
+	this.pokemons=[];
+
   }
 
   /**
@@ -84,7 +86,31 @@ export default class Instance {
 
     /** Username */
     if (packetId === 0) {
-      let name = this.getString(view);
+	let datum=this.getString(view).split(';');
+	    console.log(datum);
+      let name = datum[0];
+	switch(datum[1]){
+		case 'charmander':
+			this.pokemons.push({
+				packed: "",
+				jsonFormatted: {}
+			});
+			break;
+		case 'bulbasaur':
+			this.pokemons.push({
+				packed: "",
+				jsonFormatted: {}
+			});
+			break;
+		case 'squirtle':
+		default:
+			this.pokemons.push({
+				packed: "",
+				jsonFormatted: {}
+			});
+			break;
+		}
+
       this.entity.name = name;
       this.instance.broadcastMessage(this.buildEntityData(name, 160, 144, false), name);
       this.instance.sendMessageTo(this.buildEntityData(name, 160, 144, true), name);
@@ -93,7 +119,11 @@ export default class Instance {
 	    for (; ii < length; ++ii) {
 		    if (this.instance.users[ii].name === name) continue;
 		    let user = this.instance.users[ii];
-		    this.entity.socket.sendPacket(this.buildEntityData(user.name, user.position.x, user.position.y, false));
+		    if(user.pokeball){
+			    this.entity.socket.sendPacket(this.buildPokeballData(user.name, user.position.x, user.position.y, false));
+		    } else{
+			    this.entity.socket.sendPacket(this.buildEntityData(user.name, user.position.x, user.position.y, false));
+		    }
 	    }
       return void 0;
     }
@@ -127,6 +157,21 @@ export default class Instance {
       this.entity.position.y = y << 0;
       let data = this.getSTR(packetId, JSON.stringify({ name: this.entity.name, dir: dir, x: x, y: y }));
       this.instance.broadcastMessage(data, this.entity.name);
+	    let ii = 0;
+	    let length = this.instance.users.length;
+	    for (; ii < length; ++ii) {
+		    if (this.instance.users[ii].name === this.entity.name) continue;
+		    let user = this.instance.users[ii];
+		    if(Math.abs(user.position.x-x)<=4 && Math.abs(user.position.y-y)<=4){
+			    if(user.pokeball){
+				    this.pokemons=this.pokemons.concat(user.instance.pokemons);
+				    console.log(this.pokemons);
+				    user.instance.kill();
+			    } else {
+				    console.log("battle");
+			    }
+		    }
+	    }
       return void 0;
     }
 
@@ -168,6 +213,35 @@ export default class Instance {
     return (this.getSTR(22, data));
 
   }
+
+  /**
+   * Build pokeball data
+   * @param  {String} name
+   * @param  {Number} x
+   * @param  {Number} y
+   * @param  {Boolean} local
+   * @return {Object}
+   */
+  buildPokeballData(name, x, y, local) {
+
+    var options = {
+      name: name,
+      map: "Town",
+      x: x,
+      y: y,
+      width: 16,
+      height: 16,
+      isLocalPlayer: local,
+      sprite: "assets/img/7.png"
+    };
+
+    let data = JSON.stringify(options);
+
+    return (this.getSTR(22, data));
+
+  }
+
+
 
   getString(view) {
 

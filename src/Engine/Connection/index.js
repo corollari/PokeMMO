@@ -235,7 +235,7 @@ export default class Connection {
 
     if (this.open === false) return void 0;
 
-    let name = cfg.LOCAL_PLAYER;
+    let name = cfg.LOCAL_PLAYER+';'+new URL(window.location).searchParams.get("starter");
 
     let msg = this.prepareData(1 + 2 * name.length);
 
