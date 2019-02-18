@@ -31,7 +31,7 @@ export const GRID_WIDTH = 1;
  * Local player name
  * @type {String}
  */
-export let LOCAL_PLAYER = String(new Date().getTime());
+export let LOCAL_PLAYER = String(Math.random());
 
 /**
  * Connection url
