@@ -100,17 +100,15 @@ export default class Language {
 
     let path = "assets/i18n/";
 
-    try {
       $GET(`${path + name}.json`).then(
         JSON.parse
       ).then(this::function(data) {
         this.packets[name] = data;
         resolve();
-      });
-    } catch(e) {
+      }).catch((e) => {
       console.error(`${name} is a invalid language packet!`);
       resolve();
-    }
+    });
 
     return void 0;
 
