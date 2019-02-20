@@ -181,10 +181,56 @@ return (function() {
     type: "charizard"
   });
 
-  /*MAP.entities.push({
+  MAP.entities.push({
     x: 112 + 16, y: 136,
     type: "raindrop"
-  });*/
+  });
+
+  MAP.entities.push({
+    x: 112 + 20, y: 136,
+    type: "raindrop"
+  });
+
+  MAP.entities.push({
+    x: 168, y: 144,
+    type: "building1"
+  });
+
+  MAP.entities.push({
+    x: 92 + 4, y: 120 - 8,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 104, y: 120 - 8,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 112, y: 120 - 8,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 120, y: 120 - 8,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 128, y: 120 - 8,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 96, y: 120,
+    type: "flower"
+  });
+
+  MAP.entities.push({
+    x: 104, y: 120,
+    type: "flower"
+  });
+
 
   MAP.entities.push({
     x: 168, y: 144,
@@ -341,6 +387,17 @@ return (function() {
     type: "grass"
   });
 */
+
+  MAP.entities.push({
+    x: 200+4, y: 240+4,
+    type: "raindrop"
+  });
+
+  MAP.entities.push({
+    x: 204, y: 248,
+    type: "raindrop"
+  });
+
   MAP.entities.push({
     x: 200, y: 240,
     type: "water1"
