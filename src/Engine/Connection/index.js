@@ -150,6 +150,7 @@ export default class Connection {
       offset += 4;
       let data = JSON.parse(getString());
 	    window.frames.showdown.postMessage({type:"challenge", opponent:data.opponent, pokemons: data.pokemons}, "*");
+	    [37,38,39,40].map((code)=>document.dispatchEvent(new KeyboardEvent("keyup", {keyCode:code, "bubbles":true})));
 	    document.querySelector("#showdown-iframe").style.display="block";
 	    window.addEventListener("message", function(event) {
 		    if(event.data=="winner"){
