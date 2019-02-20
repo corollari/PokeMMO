@@ -4,7 +4,6 @@
   "width"  : 16,
   "height" : 16,
   "scale"  : 1,
-  "zIndex" : 0,
   "shadow" : false,
   "animation": true,
   "animationFrames": 32,
