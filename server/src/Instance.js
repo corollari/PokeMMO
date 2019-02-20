@@ -1,4 +1,5 @@
 import Packet from "../../src/Packets";
+import {charmander, squirtle, bulbasaur} from "./starters";
 
 /**
  * Instance
@@ -72,6 +73,10 @@ export default class Instance {
     return void 0;
   }
 
+	getRandomInt(max) {
+		return Math.floor(Math.random() * Math.floor(max));
+	}
+
   /**
    * Handle a message
    * @param {Array} msg
@@ -107,27 +112,20 @@ export default class Instance {
 		case 'charmander':
 			this.pokemons.push({
 				packed: "",
-				jsonFormatted: { name: 'Eelektross',
-  species: 'Eelektross',
-  item: 'assaultvest',
-  ability: 'Levitate',
-  moves: [ 'knockoff', 'gigadrain', 'superpower', 'thunderbolt' ],
-  nature: '',
-  evs: { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 },
-  level: 83 }
+				jsonFormatted: charmander[this.getRandomInt(charmander.length)]
 			});
 			break;
 		case 'bulbasaur':
 			this.pokemons.push({
 				packed: "",
-				jsonFormatted: {}
+				jsonFormatted: bulbasaur[this.getRandomInt(bulbasaur.length)]
 			});
 			break;
 		case 'squirtle':
 		default:
 			this.pokemons.push({
 				packed: "",
-				jsonFormatted: {}
+				jsonFormatted: squirtle[this.getRandomInt(squirtle.length)]
 			});
 			break;
 		}
@@ -215,12 +213,14 @@ export default class Instance {
 		return "=== [gen7ou] Untitled 3 ===\n\n"+
 			pokemons.map((p)=>p.jsonFormatted).map((p)=> `${p.name} @ ${p.item}  \n`+
 			`Ability: ${p.ability}  \n`+
-			`Level: ${p.level}  \n`+
 			`EVs: ${p.evs.hp} HP / ${p.evs.atk} Atk / ${p.evs.def} Def / ${p.evs.spa} SpA / ${p.evs.spd} SpD / ${p.evs.spe} Spe  \n`+
+			p.nature?`${p.nature} Nature  \n`:''+
+			p.ivs?`IVs: ${p.ivs.hp} HP / ${p.ivs.atk} Atk / ${p.ivs.def} Def / ${p.ivs.spa} SpA / ${p.ivs.spd} SpD / ${p.ivs.spe} Spe  \n`:''+
 			`- ${p.moves[0]}  \n`+
 			`- ${p.moves[1]}  \n`+
 			`- ${p.moves[2]}  \n`+
 			`- ${p.moves[3]}  \n`).join('\n');
+			//'EVs:'+(['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'].map((attr)=>p.evs[attr.toLowerCase()]?` ${p.evs[attr.toLowerCase()]} ${attr} `:'').join('/'))+' \n'+
 	}
 
   /**
