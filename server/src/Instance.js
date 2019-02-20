@@ -84,6 +84,20 @@ export default class Instance {
     let view = new DataView(buffer);
     let packetId = view.getUint8(0, true);
 
+    /** Pokebattle winner */
+    if (packetId === 70) {
+	let opponent=this.getString(view);
+	    console.log(opponent);
+	    let length = this.instance.users.length;
+            for (let ii=0; ii < length; ++ii) {
+                    if (this.instance.users[ii].name === opponent){
+			    this.pokemons=this.pokemons.concat(this.instance.users[ii].instance.pokemons);
+			    this.instance.users[ii].instance.kill();
+			    break;
+		    }
+	    }
+    }	
+
     /** Username */
     if (packetId === 0) {
 	let datum=this.getString(view).split(';');
@@ -93,7 +107,14 @@ export default class Instance {
 		case 'charmander':
 			this.pokemons.push({
 				packed: "",
-				jsonFormatted: {}
+				jsonFormatted: { name: 'Eelektross',
+  species: 'Eelektross',
+  item: 'assaultvest',
+  ability: 'Levitate',
+  moves: [ 'knockoff', 'gigadrain', 'superpower', 'thunderbolt' ],
+  nature: '',
+  evs: { hp: 85, atk: 85, def: 85, spa: 85, spd: 85, spe: 85 },
+  level: 83 }
 			});
 			break;
 		case 'bulbasaur':
@@ -165,9 +186,11 @@ export default class Instance {
 		    if(Math.abs(user.position.x-x)<=4 && Math.abs(user.position.y-y)<=4){
 			    if(user.pokeball){
 				    this.pokemons=this.pokemons.concat(user.instance.pokemons);
-				    console.log(this.pokemons);
+				    console.log(this.pokemons[1].jsonFormatted);
 				    user.instance.kill();
 			    } else {
+				    this.entity.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: user.name, pokemons: this.formatPokemonTeam(this.pokemons)})));
+				    user.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: this.entity.name, pokemons: this.formatPokemonTeam(user.instance.pokemons)})));
 				    console.log("battle");
 			    }
 		    }
@@ -186,6 +209,19 @@ export default class Instance {
     }
 
   }
+
+	formatPokemonTeam(pokemons){
+		console.log(pokemons.map((p)=>p.jsonFormatted))
+		return "=== [gen7ou] Untitled 3 ===\n\n"+
+			pokemons.map((p)=>p.jsonFormatted).map((p)=> `${p.name} @ ${p.item}  \n`+
+			`Ability: ${p.ability}  \n`+
+			`Level: ${p.level}  \n`+
+			`EVs: ${p.evs.hp} HP / ${p.evs.atk} Atk / ${p.evs.def} Def / ${p.evs.spa} SpA / ${p.evs.spd} SpD / ${p.evs.spe} Spe  \n`+
+			`- ${p.moves[0]}  \n`+
+			`- ${p.moves[1]}  \n`+
+			`- ${p.moves[2]}  \n`+
+			`- ${p.moves[3]}  \n`).join('\n');
+	}
 
   /**
    * Build entity data

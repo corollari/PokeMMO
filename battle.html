@@ -38,9 +38,10 @@
 </head>
 <body>
 
-  <canvas id="ui"     draggable="false" moz-opaque></canvas>
+  <!--<canvas id="ui"     draggable="false" moz-opaque></canvas>-->
   <canvas id="canvas" draggable="false" moz-opaque></canvas>
   <canvas id="webgl"  draggable="false" moz-opaque></canvas>
+  <iframe src="http://localhost:5002/testclient.html?~~localhost:8000" name="showdown" id="showdown-iframe" style="display:none; position: absolute; left:0; right:0; bottom:0; top:0; border:0;z-index:1;" width="100%" height="100%" frameborder="0" ></iframe>
 
   <script type="text/javascript" src="./bundle.js"></script>
   <!--<script type="text/javascript" src="./stats.js"></script>-->

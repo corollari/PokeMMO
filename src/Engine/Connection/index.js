@@ -144,6 +144,21 @@ export default class Connection {
       }
     }
 
+    /** Battle */
+    if (key === 69) {
+      offset += 4;
+      offset += 4;
+      let data = JSON.parse(getString());
+	    window.frames.showdown.postMessage({type:"challenge", opponent:data.opponent, pokemons: data.pokemons}, "*");
+	    document.querySelector("#showdown-iframe").style.display="block";
+	    window.addEventListener("message", function(event) {
+		    if(event.data=="winner"){
+			    document.querySelector("#showdown-iframe").style.display="none";
+			    this.announceWinner(data.opponent);
+		    }
+	    }.bind(this));
+    }
+
     /** Nerby players */
     if (key === 40) {
       offset += 4;
@@ -229,6 +244,28 @@ export default class Connection {
   }
 
   /**
+   * Announce that we are the winners
+   */
+  announceWinner(opponent) {
+
+    if (this.open === false) return void 0;
+
+    let msg = this.prepareData(1 + 2 * opponent.length);
+
+    msg.setUint8(0, 70);
+
+    for (var ii = 0; ii < opponent.length; ++ii) {
+      msg.setUint16(1 + 2 * ii, opponent.charCodeAt(ii), true);
+    }
+
+    this.send(msg);
+
+  }
+
+
+
+
+  /**
    * Send user data
    */
   sendUserData() {
@@ -236,6 +273,8 @@ export default class Connection {
     if (this.open === false) return void 0;
 
     let name = cfg.LOCAL_PLAYER+';'+new URL(window.location).searchParams.get("starter");
+
+	  setTimeout(()=>window.frames.showdown.postMessage({type:"register", username: cfg.LOCAL_PLAYER}, "*"), 3000);
 
     let msg = this.prepareData(1 + 2 * name.length);
 
