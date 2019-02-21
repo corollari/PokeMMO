@@ -268,7 +268,7 @@ export default class Instance {
       width: 16,
       height: 16,
       isLocalPlayer: local,
-      sprite: "assets/img/7.png"
+      sprite: "assets/img/pokeball.png"
     };
 
     let data = JSON.stringify(options);
