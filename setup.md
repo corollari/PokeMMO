@@ -10,6 +10,10 @@ npm run watch
 cd PokeMMO
 python -m SimpleHTTPServer 5001
 
+## Lobby server (websockets server on port 5003)
+cd PokeMMO/lobby/server
+npm run start
+
 ## Pokemon Showdown Server (port 8000)
 cd Pokemon-Showdown
 ./pokemon-showdown 
