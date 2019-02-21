@@ -187,8 +187,8 @@ export default class Instance {
 				    console.log(this.pokemons[1].jsonFormatted);
 				    user.instance.kill();
 			    } else {
-				    this.entity.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: user.name, pokemons: this.formatPokemonTeam(this.pokemons)})));
-				    user.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: this.entity.name, pokemons: this.formatPokemonTeam(user.instance.pokemons)})));
+				    this.entity.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: user.name, pokemons: this.formatPokemonTeam(this.pokemons.slice(0, 6))})));
+				    user.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: this.entity.name, pokemons: this.formatPokemonTeam(user.instance.pokemons.slice(0, 6))})));
 				    console.log("battle");
 			    }
 		    }
