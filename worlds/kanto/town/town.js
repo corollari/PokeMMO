@@ -399,6 +399,82 @@ return (function() {
   });
 
   MAP.entities.push({
+    x: 152-32, y: 216,
+    type: "arbol"
+  });
+
+  MAP.entities.push({
+    x: 168-8, y: 216,
+    type: "arbol2"
+  });
+
+  MAP.entities.push({
+    x: 184, y: 216,
+    type: "arbol3"
+  });
+
+  MAP.entities.push({
+    x: 304, y: 184,
+    type: "arbol_pequeno"
+  });
+
+  MAP.entities.push({
+    x: 232, y: 216,
+    type: "concha"
+  });
+
+  MAP.entities.push({
+    x: 232+8, y: 200,
+    type: "escalera_nieve"
+  });
+
+  MAP.entities.push({
+    x: 232+8*2, y: 216,
+    type: "hierbajo"
+  });
+
+
+  MAP.entities.push({
+    x: 232+8*3, y: 216,
+    type: "hierbajo2"
+  });
+
+  MAP.entities.push({
+    x: 232+8*4, y: 216,
+    type: "hierbajo_nieve"
+  });
+
+  MAP.entities.push({
+    x: 232+8*5, y: 216,
+    type: "hierbajo_nieve2"
+  });
+
+  MAP.entities.push({
+    x: 232+8*6, y: 216,
+    type: "hierbajo_nieve3"
+  });
+
+  MAP.entities.push({
+    x: 232+8*7, y: 216,
+    type: "hierbajo_playa"
+  });
+
+  MAP.entities.push({
+    x: 232+8*8, y: 216,
+    type: "nieve"
+  });
+
+  MAP.entities.push({
+    x: 232+8*9, y: 216,
+    type: "roca_mar"
+  });
+
+  MAP.entities.push({
+    x: 232+8*10, y: 216,
+    type: "roca_nieve"
+  });
+
+  MAP.entities.push({
     x: 200, y: 240,
     type: "water1"
   });

@@ -1,0 +1,9 @@
+{
+  "name"   : "roca_nieve",
+  "sprite" : "roca_nieve.png",
+  "width"  : 8,
+  "height" : 8,
+  "scale"  : 1,
+  "shadow" : true,
+  "collidable": true
+}

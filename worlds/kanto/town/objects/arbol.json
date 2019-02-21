@@ -1,0 +1,15 @@
+{
+  "name"   : "arbol",
+  "sprite" : "arbol.png",
+  "width"  : 32,
+  "height" : 32,
+  "scale"  : 1,
+  "shadow" : true,
+  "collidable": true,
+  "collisionBox": [
+   0, 0, 0, 0, 
+   0, 0, 0, 0,
+   0, 1, 1, 0,
+   0, 1, 1, 0
+  ]
+}
