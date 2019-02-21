@@ -34,15 +34,49 @@
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="favicon.ico">
     <title>Pokémon Engine</title>
-    <link rel="stylesheet" type="text/css" href="./main.css">
+    <!--<link rel="stylesheet" type="text/css" href="./main.css">-->
+    <link rel="stylesheet" type="text/css" href="./lobby/cards.css">
+    <link rel="stylesheet" type="text/css" href="./lobby/spinner.css">
 </head>
 <body>
+	<div id="pokemonPicker">
+	Pick a pokemon
+	<ul class="card-list">
+	<li class="card">
+		<a class="card-image" href="javascript:;" onclick="selectPoke('charmander')">
+			<img src="lobby/img/charmander.png" />
+		</a>
+	</li>
+	<li class="card">
+		<a class="card-image" href="javascript:;" onclick="selectPoke('squirtle')">
+			<img src="lobby/img/squirtle.png" />
+		</a>
+	</li>
+	<li class="card">
+		<a class="card-image" href="javascript:;" onclick="selectPoke('bulbasaur')">
+			<img src="lobby/img/bulbasaur.png" />
+		</a>
+	</li>
+	</ul>
 
-	Pick a pokemon:
-	<a href="/battle.html?starter=charmander">Charmander</a>
-	<a href="/battle.html?starter=squirtle">Squirtle</a>
-	<a href="/battle.html?starter=bulbasaur">Bulbasaur</a>
+	</div>
+	<div id="loading" style="display:none" class="vertical-center">
+		<div style="width:100%">
+		<div id="moving-container">
+			<div id="pokeball-container">
+			<!-- pokeball -->
+				<div id="pokeball">
+					<div class="pokeball-details"></div>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: center;width: 100%;">
+			Waiting for other players<br>
+			<span id="users">1</span>/30</div>
+		</div>
+	</div>
 
+	<script src="./lobby/client.js"></script>
 
 </body>
 </html>

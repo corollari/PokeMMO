@@ -1,0 +1,15 @@
+{
+  "name": "lobbyserver",
+  "version": "0.0.1",
+  "description": "PokémonBR Lobby server",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "^1.7.1"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
