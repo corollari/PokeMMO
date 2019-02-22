@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Kanban Drag and Drop</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="picker/css/style.css">
+
+  
+</head>
+
+<body>
+
+
+<div class="drag-container" style="
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    margin: auto;">
+	<ul class="drag-list">
+		<li class="drag-column drag-column-on-hold">
+			<span class="drag-column-header">
+				<h2>On Hold</h2>
+			</span>
+				
+			
+			<ul class="drag-inner-list" id="1">
+				<li class="drag-item"></li>
+				<li class="drag-item"></li>
+			</ul>
+		</li>
+		<li class="drag-column drag-column-approved">
+			<span class="drag-column-header">
+				<h2>Approved</h2>
+			</span>
+			<ul class="drag-inner-list" id="4">
+				<li class="drag-item"></li>
+				<li class="drag-item"></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<section class="section">
+	Drag and drop to select pokemons
+</section>
+
+  <script src='picker/dragula.min.js'></script>
+    <script  src="picker/js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

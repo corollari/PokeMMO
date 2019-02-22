@@ -152,13 +152,52 @@ export default class Connection {
 	    window.frames.showdown.postMessage({type:"challenge", opponent:data.opponent, pokemons: data.pokemons}, "*");
 	    [37,38,39,40].map((code)=>document.dispatchEvent(new KeyboardEvent("keyup", {keyCode:code, "bubbles":true})));
 	    document.querySelector("#showdown-iframe").style.display="block";
-	    window.addEventListener("message", function(event) {
+	    window.addEventListenerRunOnce("message", function(event) {
 		    if(event.data=="winner"){
 			    document.querySelector("#showdown-iframe").style.display="none";
-			    this.announceWinner(data.opponent);
+			    this.sendMsg(70, data.opponent);
 		    }
 	    }.bind(this));
     }
+
+    /** Pick pokemons */
+    if (key === 71) {
+      offset += 4;
+      offset += 4;
+      let data = JSON.parse(getString());
+	    document.querySelector(".drag-container").style.display='inline-block';
+	    document.querySelectorAll('.drag-item').forEach((el)=>el.parentNode.removeChild(el));
+	    data.opponent.forEach((pokemon)=>{
+		    addPokemon(".drag-column-on-hold>ul", pokemon);
+	    });
+	    data.own.forEach((pokemon)=>{
+		    addPokemon(".drag-column-approved>ul", pokemon);
+	    });
+
+	    function addPokemon(selector, pokemon){
+		    let elem = document.createElement('li');
+                    elem.textContent=pokemon.species;
+                    elem.className="drag-item";
+		    elem.dataPokemon=JSON.stringify(pokemon);
+                    document.querySelector(selector).appendChild(elem);
+	    }
+
+	    function enterPressed (event) {
+                    if(event.key=="Enter"){
+                            let accepted=document.querySelectorAll(".drag-column-approved>ul>.drag-item");
+			    if(accepted.length>6){
+				    alert("You can only carry a maximum of 6 pokemon");
+				    return;
+			    }
+			    let pokemons2send=JSON.stringify(Array.from(accepted).map((el)=>JSON.parse(el.getAttribute('dataPokemon'))));
+			    this.sendMsg(72, pokemons2send);
+                            window.removeEventListener("keydown", enterPressed.bind(this));
+                    }
+	    }
+
+	    window.addEventListener("keydown", enterPressed);
+    }
+
 
     /** Nerby players */
     if (key === 40) {
@@ -244,24 +283,26 @@ export default class Connection {
     return void 0;
   }
 
+
   /**
-   * Announce that we are the winners
+   * Send an arbritrary message
    */
-  announceWinner(opponent) {
+  sendMsg(msgId, data) {
 
     if (this.open === false) return void 0;
 
-    let msg = this.prepareData(1 + 2 * opponent.length);
+    let msg = this.prepareData(1 + 2 * data.length);
 
-    msg.setUint8(0, 70);
+    msg.setUint8(0, msgId);
 
-    for (var ii = 0; ii < opponent.length; ++ii) {
-      msg.setUint16(1 + 2 * ii, opponent.charCodeAt(ii), true);
+    for (var ii = 0; ii < data.length; ++ii) {
+      msg.setUint16(1 + 2 * ii, data.charCodeAt(ii), true);
     }
 
     this.send(msg);
 
   }
+
 
 
 

@@ -96,12 +96,19 @@ export default class Instance {
 	    let length = this.instance.users.length;
             for (let ii=0; ii < length; ++ii) {
                     if (this.instance.users[ii].name === opponent){
-			    this.pokemons=this.pokemons.concat(this.instance.users[ii].instance.pokemons);
+			    this.entity.socket.sendPacket(this.getSTR(71, JSON.stringify({ opponent: this.instance.users[ii].instance.pokemons, own: this.pokemons})));
 			    this.instance.users[ii].instance.kill();
 			    break;
 		    }
 	    }
     }	
+
+    /** Picked pokemons */
+    if (packetId === 72) {
+	    let pickedPokemons=JSON.parse(this.getString(view));
+	    this.pokemons=pickedPokemons;
+    }	
+
 
     /** Username */
     if (packetId === 0) {

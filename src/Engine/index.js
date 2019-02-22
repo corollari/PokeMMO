@@ -24,6 +24,15 @@ import Environment from "./Environment";
 import Notification from "./Notification";
 import DisplayObject from "./DisplayObject";
 
+EventTarget.prototype.addEventListenerRunOnce = function(name, callback) {
+    const eventWrapper = (event) => {
+        this.removeEventListener(name, eventWrapper);
+        callback(event);
+    };
+    
+    this.addEventListener(name, eventWrapper);
+};
+
 /**
  * Engine
  * @class Engine

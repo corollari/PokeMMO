@@ -35,6 +35,15 @@
     <link rel="shortcut icon" href="favicon.ico">
     <title>Pokémon Engine</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="picker/css/style.css">
+
+
 </head>
 <body>
 
@@ -43,8 +52,48 @@
   <canvas id="webgl"  draggable="false" moz-opaque></canvas>
   <iframe src="http://localhost:5002/testclient.html?~~localhost:8000" name="showdown" id="showdown-iframe" style="display:none; position: absolute; left:0; right:0; bottom:0; top:0; border:0;z-index:1;" width="100%" height="100%" frameborder="0" ></iframe>
 
+<div class="drag-container" style="
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    z-index:1">
+	<ul class="drag-list">
+		<li class="drag-column drag-column-on-hold">
+			<span class="drag-column-header">
+				<h2>Throw away</h2>
+			</span>
+				
+			
+			<ul class="drag-inner-list" id="1">
+				<li class="drag-item"></li>
+				<li class="drag-item"></li>
+			</ul>
+		</li>
+		<li class="drag-column drag-column-approved">
+			<span class="drag-column-header">
+				<h2>Keep</h2>
+			</span>
+			<ul class="drag-inner-list" id="4">
+				<li class="drag-item"></li>
+				<li class="drag-item"></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+
   <script type="text/javascript" src="./bundle.js"></script>
   <!--<script type="text/javascript" src="./stats.js"></script>-->
+  <script src='picker/dragula.min.js'></script>
+    <script  src="picker/js/index.js"></script>
 
 </body>
 </html>
