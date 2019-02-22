@@ -98,6 +98,7 @@ export default class Instance {
                     if (this.instance.users[ii].name === opponent){
 			    this.entity.socket.sendPacket(this.getSTR(71, JSON.stringify({ opponent: this.instance.users[ii].instance.pokemons, own: this.pokemons})));
 			    this.instance.users[ii].instance.kill();
+			    this.instance.users.splice(ii, 1);
 			    break;
 		    }
 	    }
@@ -193,6 +194,7 @@ export default class Instance {
 				    this.pokemons=this.pokemons.concat(user.instance.pokemons);
 				    console.log(this.pokemons[1].jsonFormatted);
 				    user.instance.kill();
+				    this.instance.users.splice(ii, 1);
 			    } else {
 				    this.entity.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: user.name, pokemons: this.formatPokemonTeam(this.pokemons.slice(0, 6))})));
 				    user.socket.sendPacket(this.getSTR(69, JSON.stringify({ opponent: this.entity.name, pokemons: this.formatPokemonTeam(user.instance.pokemons.slice(0, 6))})));
