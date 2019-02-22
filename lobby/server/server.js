@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({ port: 5003 });
 
-const playersPerGame=30;
+const playersPerGame=3;
 
 wss.on('connection', function connection(ws) {
 
