@@ -55,7 +55,7 @@ export default class Game {
         this.addEntities(() => this.setup(stage));
       return void 0;
       case 5:
-        this.animateNPC();
+        //this.animateNPC();
         this.setup(stage);
       return void 0;
       case 6:
@@ -115,7 +115,7 @@ export default class Game {
   addEntities(resolve) {
 
     let player = this.entities.Player;
-
+/*
     this.engine.addEntity(new entities.Light({
       sprite: "assets/img/light.png",
       map: "Town",
@@ -187,7 +187,7 @@ export default class Game {
       collidable: false,
       following: "Mew"
     }));
-
+*/
     if (OFFLINE_MODE) {
       this.engine.addEntity(new player({
         name: "Felix", map: "Town", x: 144, y: 152, sprite: "assets/img/0.png", width: 16, height: 16, isLocalPlayer: true, collidable: true, normal: true,
