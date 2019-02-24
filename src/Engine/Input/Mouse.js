@@ -33,7 +33,7 @@ export default class Mouse {
       if (ev === "mousewheel") {
         window.addWheelListener(document.body, e => root::event.fire(e));
       } else {
-        window.addEventListener(ev, e => root::event.fire(e), false);
+        //window.addEventListener(ev, e => root::event.fire(e), false);
       }
     };
 
