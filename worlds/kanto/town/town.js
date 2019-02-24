@@ -475,6 +475,111 @@ return (function() {
   });
 
   MAP.entities.push({
+    x: 232+8*13, y: 216,
+    type: "valla1"
+  });
+
+  MAP.entities.push({
+    x: 232+8*14, y: 216,
+    type: "valla7"
+  });
+
+  MAP.entities.push({
+    x: 232+8*15, y: 216,
+    type: "valla_ciudad3"
+  });
+
+  MAP.entities.push({
+    x: 232+8*16, y: 216,
+    type: "valla6"
+  });
+
+  MAP.entities.push({
+    x: 232+8*17, y: 216,
+    type: "valla_nieve2"
+  });
+
+  MAP.entities.push({
+    x: 232+8*18, y: 216,
+    type: "valla_ciudad5"
+  });
+
+  MAP.entities.push({
+    x: 232+8*19, y: 216,
+    type: "valla_nieve1"
+  });
+
+  MAP.entities.push({
+    x: 232+8*20, y: 216,
+    type: "valla_ciudad1"
+  });
+
+  MAP.entities.push({
+    x: 232+8*21, y: 216,
+    type: "valla4"
+  });
+
+  MAP.entities.push({
+    x: 232+8*22, y: 216,
+    type: "valla_nieve6"
+  });
+
+  MAP.entities.push({
+    x: 232+8*23, y: 216,
+    type: "valla_ciudad2"
+  });
+
+  MAP.entities.push({
+    x: 232+8*24, y: 216,
+    type: "valla5"
+  });
+
+  MAP.entities.push({
+    x: 232+8*25, y: 216,
+    type: "valla_ciudad7"
+  });
+
+  MAP.entities.push({
+    x: 232+8*26, y: 216,
+    type: "valla_nieve5"
+  });
+
+  MAP.entities.push({
+    x: 232+8*27, y: 216,
+    type: "valla_nieve3"
+  });
+
+  MAP.entities.push({
+    x: 232+8*28, y: 216,
+    type: "valla3"
+  });
+
+  MAP.entities.push({
+    x: 232+8*29, y: 216,
+    type: "valla_ciudad4"
+  });
+
+  MAP.entities.push({
+    x: 232+8*30, y: 216,
+    type: "valla_nieve4"
+  });
+
+  MAP.entities.push({
+    x: 232+8*31, y: 216,
+    type: "valla2"
+  });
+
+  MAP.entities.push({
+    x: 232+8*32, y: 216,
+    type: "valla_ciudad6"
+  });
+
+  MAP.entities.push({
+    x: 232+8*33, y: 216,
+    type: "valla_nieve7"
+  });
+
+  MAP.entities.push({
     x: 200, y: 240,
     type: "water1"
   });
