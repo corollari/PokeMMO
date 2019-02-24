@@ -1,13 +1,13 @@
 {
   "name"   : "escalera_nieve",
   "sprite" : "escalera_nieve.png",
-  "width"  : 32,
+  "width"  : 24,
   "height" : 8,
   "scale"  : 1,
   "shadow" : true,
+  "zIndex" : 0.5,
   "collidable": true,
   "collisionBox": [
-   1, 0, 0, 1
-
+   1, 0, 1
   ]
 }

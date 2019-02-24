@@ -5,6 +5,7 @@
   "height" : 16,
   "scale"  : 1,
   "shadow" : false,
+  "zIndex" : 0.5,
   "animation": true,
   "animationFrames": 32,
   "loop": true,
