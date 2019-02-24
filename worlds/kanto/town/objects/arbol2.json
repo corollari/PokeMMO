@@ -1,16 +1,15 @@
 {
   "name"   : "arbol2",
   "sprite" : "arbol2.png",
-  "width"  : 24,
-  "height" : 32,
+  "width"  : 16,
+  "height" : 24,
   "scale"  : 1,
   "shadow" : true,
+  "shadowY": -5,
   "collidable": true,
   "collisionBox": [
-   0, 0, 0, 0, 
-   0, 0, 0, 0,
-   0, 1, 1, 0,
-   0, 1, 1, 0
- 
+   0, 0, 
+   0, 0,
+   1, 1
   ]
 }
